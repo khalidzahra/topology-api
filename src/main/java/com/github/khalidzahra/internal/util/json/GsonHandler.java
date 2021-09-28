@@ -1,10 +1,9 @@
-package com.github.khalidzahra.util.json;
+package com.github.khalidzahra.internal.util.json;
 
-import com.github.khalidzahra.component.Component;
-import com.github.khalidzahra.topology.Topology;
+import com.github.khalidzahra.internal.device.Device;
+import com.github.khalidzahra.internal.topology.Topology;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonIOException;
 
 import java.io.*;
 
@@ -14,7 +13,7 @@ import java.io.*;
 public class GsonHandler {
 
     private static final Gson gson = new GsonBuilder()
-            .registerTypeAdapter(Component.class, new ComponentSerializer())
+            .registerTypeAdapter(Device.class, new DeviceSerializer())
             .setPrettyPrinting().create();
 
     public static Topology loadTopology(String filePath) {

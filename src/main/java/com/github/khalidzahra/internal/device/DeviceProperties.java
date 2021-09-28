@@ -1,11 +1,11 @@
-package com.github.khalidzahra.component;
+package com.github.khalidzahra.internal.device;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Khalid on 9/28/21.
  */
-public class ComponentProperties {
+public class DeviceProperties {
 
     private double min, max;
 

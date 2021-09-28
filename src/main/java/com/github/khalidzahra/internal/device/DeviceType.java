@@ -1,11 +1,11 @@
-package com.github.khalidzahra.component;
+package com.github.khalidzahra.internal.device;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Khalid on 9/28/21.
  */
-public enum ComponentType {
+public enum DeviceType {
 
     @SerializedName("resistor")
     RESISTOR("resistance"),
@@ -22,7 +22,7 @@ public enum ComponentType {
 
     private final String serializedPropertyName;
 
-    ComponentType(String serializedPropertyName) {
+    DeviceType(String serializedPropertyName) {
         this.serializedPropertyName = serializedPropertyName;
     }
 
