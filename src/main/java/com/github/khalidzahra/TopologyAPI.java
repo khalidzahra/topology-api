@@ -59,6 +59,19 @@ public class TopologyAPI {
     }
 
     /**
+     * Finds topology with specified topology ID
+     * @param topologyID String variable containing the topology ID
+     * @return Returns Topology object with specified topology ID
+     */
+    public Topology findTopology(String topologyID) {
+        return topologyRegistry.getTopologyList()
+                .stream()
+                .filter(topology -> topology.getId().equals(topologyID))
+                .findAny()
+                .orElse(null);
+    }
+
+    /**
      * Deletes the specified topology from memory
      *
      * @param topologyID String variable containing the topology ID

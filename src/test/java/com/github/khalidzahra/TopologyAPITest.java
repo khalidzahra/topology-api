@@ -100,4 +100,20 @@ public class TopologyAPITest extends TestCase {
         assertEquals(topologyAPI.queryDevicesWithNetlistNode("top2", "vss").get(0).getDeviceType(), DeviceType.PMOS);
 
     }
+
+    public void testFindTopology() {
+        TopologyAPI topologyAPI = new TopologyAPI();
+        topologyAPI.readJSON(resourceDirectory.toAbsolutePath() + "/topology1.json");
+        assertNotNull(topologyAPI.findTopology("top1"));
+        assertEquals(topologyAPI.findTopology("top1").getId(), "top1");
+        topologyAPI.readJSON(resourceDirectory.toAbsolutePath() + "/topology2.json");
+        assertNotNull(topologyAPI.findTopology("top2"));
+        assertEquals(topologyAPI.findTopology("top2").getId(), "top2");
+        assertNull(topologyAPI.findTopology("top3"));
+        assertNull(topologyAPI.findTopology("top4"));
+        topologyAPI.deleteTopology("top1");
+        assertNull(topologyAPI.findTopology("top1"));
+        topologyAPI.deleteTopology("top2");
+        assertNull(topologyAPI.findTopology("top2"));
+    }
 }
