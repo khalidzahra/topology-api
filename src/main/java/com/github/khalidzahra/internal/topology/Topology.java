@@ -25,10 +25,19 @@ public class Topology {
         this.devices = deviceList;
     }
 
+    /**
+     * Finds devices connected to the specified node
+     * @param nodeId String variable containing the node ID
+     * @return Returns List of Device containing all devices connected to the specified node.
+     */
     public List<Device> getDevicesConnectedToNode(String nodeId) {
         return this.devices.stream().filter(device -> device.getNetList().containsValue(nodeId)).toList();
     }
 
+    /**
+     * Adds the specified device to the topology
+     * @param device Device object to be added to the topology
+     */
     public void addDevice(Device device) {
         devices.add(device);
     }

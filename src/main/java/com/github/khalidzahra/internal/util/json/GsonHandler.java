@@ -12,10 +12,19 @@ import java.io.*;
  */
 public class GsonHandler {
 
+    /**
+     * GsonBuilder object that will be used throughout project
+     */
     private static final Gson gson = new GsonBuilder()
             .registerTypeAdapter(Device.class, new DeviceSerializer())
             .setPrettyPrinting().create();
 
+    /**
+     * Reads specified JSON file and creates Topology object
+     *
+     * @param filePath String variable containing path to the JSON file
+     * @return Returns Topology object. Returns null if file does not exist or object is not found within the file.
+     */
     public static Topology loadTopology(String filePath) {
         Topology topology;
         try {
@@ -27,6 +36,12 @@ public class GsonHandler {
         return topology;
     }
 
+    /**
+     * Saves the given topology to the specified file
+     * @param filePath String variable containing path to the JSON file
+     * @param topology Topology object to be saved
+     * @return Returns true if save was successful
+     */
     public static boolean saveTopology(String filePath, Topology topology) {
         try {
             getGson().toJson(topology, new FileWriter(filePath));

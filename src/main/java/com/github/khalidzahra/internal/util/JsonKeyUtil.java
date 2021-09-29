@@ -13,6 +13,4 @@ public class JsonKeyUtil {
     public static final String DEVICE_PROPERTIES_TRANSISTOR_KEY = "m(l)";
     public static final String DEVICE_NETLIST_KEY = "netlist";
 
-
-
 }

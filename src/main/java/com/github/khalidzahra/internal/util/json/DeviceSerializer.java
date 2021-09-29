@@ -12,6 +12,8 @@ import java.util.Locale;
 
 /**
  * Created by Khalid on 9/28/21.
+ * <p>
+ * Custom JsonSerializer implementation to be used by the GsonBuilder object in GsonHandler
  */
 public class DeviceSerializer implements JsonSerializer<Device> {
 
