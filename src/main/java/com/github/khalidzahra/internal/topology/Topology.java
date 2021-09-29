@@ -11,17 +11,18 @@ import java.util.List;
  */
 public class Topology {
 
-    private String id;
+    @SerializedName("id")
+    private final String topologyId;
     @SerializedName("components")
-    private List<Device> devices;
+    private final List<Device> devices;
 
-    public Topology(String id) {
-        this.id = id;
+    public Topology(String topologyId) {
+        this.topologyId = topologyId;
         this.devices = new ArrayList<>();
     }
 
-    public Topology(String id, List<Device> deviceList) {
-        this.id = id;
+    public Topology(String topologyId, List<Device> deviceList) {
+        this.topologyId = topologyId;
         this.devices = deviceList;
     }
 
@@ -42,8 +43,8 @@ public class Topology {
         devices.add(device);
     }
 
-    public String getId() {
-        return id;
+    public String getTopologyId() {
+        return topologyId;
     }
 
     public List<Device> getDevices() {

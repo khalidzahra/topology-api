@@ -7,10 +7,17 @@ import com.google.gson.annotations.SerializedName;
  */
 public class DeviceProperties {
 
-    private double min, max;
+    private double min;
+    private double max;
 
     @SerializedName("default")
     private double defaultValue;
+
+    public DeviceProperties(double min, double max, double defaultValue) {
+        this.min = min;
+        this.max = max;
+        this.defaultValue = defaultValue;
+    }
 
     public double getMin() {
         return min;

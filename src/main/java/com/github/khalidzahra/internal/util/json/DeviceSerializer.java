@@ -21,7 +21,7 @@ public class DeviceSerializer implements JsonSerializer<Device> {
     public JsonElement serialize(Device device, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty(JsonKeyUtil.DEVICE_TYPE_KEY, device.getDeviceType().toString().toLowerCase(Locale.ROOT));
-        jsonObject.addProperty("id", device.getId());
+        jsonObject.addProperty("id", device.getDeviceId());
         jsonObject.add(device.getDeviceType().getSerializedPropertyName(), jsonSerializationContext.serialize(device.getDeviceProperties()));
         jsonObject.add(JsonKeyUtil.DEVICE_NETLIST_KEY, jsonSerializationContext.serialize(device.getNetList()));
 

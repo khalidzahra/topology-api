@@ -6,16 +6,18 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Created by Khalid on 9/28/21.
  */
-public class GsonHandler {
+public class GsonUtil {
 
     /**
      * GsonBuilder object that will be used throughout project
      */
-    private static final Gson gson = new GsonBuilder()
+    private static final Gson GSON_OBJECT = new GsonBuilder()
             .registerTypeAdapter(Device.class, new DeviceSerializer())
             .setPrettyPrinting().create();
 
@@ -27,10 +29,9 @@ public class GsonHandler {
      */
     public static Topology loadTopology(String filePath) {
         Topology topology;
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(filePath))) {
             topology = getGson().fromJson(reader, Topology.class);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             return null;
         }
         return topology;
@@ -44,7 +45,7 @@ public class GsonHandler {
      * @return Returns true if save was successful
      */
     public static boolean saveTopology(String filePath, Topology topology) {
-        try (FileWriter writer = new FileWriter(filePath)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(filePath))) {
             getGson().toJson(topology, writer);
         } catch (IOException e) {
             return false;
@@ -53,6 +54,6 @@ public class GsonHandler {
     }
 
     public static Gson getGson() {
-        return gson;
+        return GSON_OBJECT;
     }
 }

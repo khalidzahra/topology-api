@@ -52,7 +52,8 @@ public class TopologyAPI {
     /**
      * Queries all topologies currently stored in memory
      *
-     * @return Returns a List of Topology containing all loaded topologies. Returns an empty list if no topologies are found.
+     * @return Returns a List of Topology containing all loaded topologies.
+     * Returns an empty list if no topologies are found.
      */
     public List<Topology> queryTopologies() {
         return topologyRegistry.getTopologyList();
@@ -60,13 +61,14 @@ public class TopologyAPI {
 
     /**
      * Finds topology with specified topology ID
+     *
      * @param topologyID String variable containing the topology ID
      * @return Returns Topology object with specified topology ID
      */
     public Topology findTopology(String topologyID) {
         return topologyRegistry.getTopologyList()
                 .stream()
-                .filter(topology -> topology.getId().equals(topologyID))
+                .filter(topology -> topology.getTopologyId().equals(topologyID))
                 .findAny()
                 .orElse(null);
     }
@@ -85,7 +87,8 @@ public class TopologyAPI {
      * Queries the devices connected within a topology
      *
      * @param topologyID String variable containing the topology ID
-     * @return Returns a List of Device containing all connected devices. Returns an empty list if no devices are found.
+     * @return Returns a List of Device containing all connected devices.
+     * Returns an empty list if no devices are found.
      */
     public List<Device> queryDevices(String topologyID) {
         Topology topology = topologyRegistry.findTopology(topologyID);
@@ -97,7 +100,8 @@ public class TopologyAPI {
      *
      * @param topologyID    String variable containing the topology ID
      * @param netlistNodeID String variable containing the node ID
-     * @return Returns a List of Device containing all connected devices. Returns an empty list if no devices are found.
+     * @return Returns a List of Device containing all connected devices.
+     * Returns an empty list if no devices are found.
      */
     public List<Device> queryDevicesWithNetlistNode(String topologyID, String netlistNodeID) {
         Topology topology = topologyRegistry.findTopology(topologyID);
