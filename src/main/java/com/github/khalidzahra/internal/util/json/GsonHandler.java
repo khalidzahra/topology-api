@@ -38,13 +38,14 @@ public class GsonHandler {
 
     /**
      * Saves the given topology to the specified file
+     *
      * @param filePath String variable containing path to the JSON file
      * @param topology Topology object to be saved
      * @return Returns true if save was successful
      */
     public static boolean saveTopology(String filePath, Topology topology) {
-        try {
-            getGson().toJson(topology, new FileWriter(filePath));
+        try (FileWriter writer = new FileWriter(filePath)) {
+            getGson().toJson(topology, writer);
         } catch (IOException e) {
             return false;
         }
